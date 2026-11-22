@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Anteprima social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --pink:     #92003b;                /* rosa Elementor: la superficie */
+    --blush:    #ffd1e3;                /* accento chiaro sul rosa e sul nero */
+    --ink:      oklch(0.20 0.03 5);     /* quasi nero, scaldato verso il rosa */
+    --ink-soft: oklch(0.34 0.03 5);
+    --paper:    oklch(0.985 0.01 95);
+    --line:     oklch(0.86 0.02 90);
+    --mute:     oklch(0.62 0.02 90);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
+  body {
+    background: var(--pink);
+    color: var(--paper);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    position: relative;
+  }
+
+  /* ---- testo, colonna sinistra ---- */
+  .copy { position: absolute; left: 80px; top: 74px; width: 600px; }
+  h1 {
+    font-variation-settings: "opsz" 96;
+    font-weight: 800;
+    font-size: 86px;
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+  }
+  h1 .soft { font-weight: 400; letter-spacing: -0.03em; }
+  .lede {
+    margin-top: 30px;
+    font-size: 27px;
+    line-height: 1.32;
+    font-weight: 400;
+    color: oklch(0.985 0.01 95 / 0.88);
+    max-width: 30ch;
+  }
+  .cmd {
+    position: absolute; left: 80px; bottom: 74px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 21px;
+    background: var(--ink);
+    color: var(--blush);
+    padding: 13px 20px 13px 18px;
+    border-radius: 10px;
+  }
+  .cmd .ps { opacity: 0.55; margin-right: 0.6ch; }
+  .repo {
+    position: absolute; left: 80px; bottom: 34px;
+    font-size: 17px; font-weight: 600; letter-spacing: 0.01em;
+    color: var(--blush);
+  }
+
+  /* ---- due finestre, colonna destra ---- */
+  .win {
+    position: absolute;
+    width: 430px; height: 300px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid var(--ink);
+  }
+  .win .bar {
+    height: 46px; display: flex; align-items: center;
+    padding: 0 0 0 18px; font-size: 18px; font-weight: 600;
+  }
+  .win .bar .title { flex: 1; }
+  .win .ctl { display: flex; height: 100%; }
+  .win .ctl span { width: 46px; display: grid; place-items: center; }
+  .win .ctl svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+  .win .body { padding: 22px 26px 0; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 500; }
+
+  /* terminale, dietro */
+  .w1 { left: 694px; top: 64px; height: 292px; background: var(--ink); color: var(--paper); }
+  .w1 .bar { border-bottom: 1px solid oklch(0.32 0.02 85); }
+  .steps { display: grid; gap: 11px; font-size: 17px; }
+  .steps div { display: flex; align-items: center; gap: 12px; }
+  .steps .n { color: oklch(0.72 0.03 90); width: 1.4ch; }
+  .steps .ok {
+    margin-left: auto; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--blush); color: var(--ink);
+    display: grid; place-items: center;
+  }
+  .steps .ok svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2.4; fill: none; }
+
+  /* documento Elementor, davanti */
+  .w2 {
+    left: 764px; top: 296px; height: 250px; background: var(--paper); color: var(--ink);
+    box-shadow: 12px 12px 0 var(--ink);
+  }
+  .w2 .bar { border-bottom: 1px solid var(--line); }
+  .code { font-size: 16px; line-height: 1.62; color: var(--ink-soft); white-space: pre; }
+  .code .k { color: var(--mute); }
+  .code .del { display: block; background: oklch(0.93 0.015 92); color: var(--mute); margin: 0 -26px; padding: 0 26px; text-decoration: line-through; }
+  .code .add { display: block; background: var(--blush); color: var(--ink); margin: 0 -26px; padding: 0 26px; font-weight: 500; }
+
+  .tag {
+    margin-left: auto; margin-right: 14px; font-size: 14px; font-weight: 800; letter-spacing: 0.04em;
+    padding: 5px 10px; border-radius: 999px;
+  }
+  .w2 .tag { background: var(--ink); color: var(--blush); }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <h1>Elementor dal server.<br><span class="soft">Non dal browser.</span></h1>
+    <p class="lede">Una skill per Claude Code: modifica i siti WordPress via SSH, con prova a vuoto e controllo finale.</p>
+  </div>
+
+  <div class="cmd"><span class="ps">&gt;</span>/wordpress-elementor-ssh</div>
+  <div class="repo">github.com/ostile17/wordpress-elementor-ssh</div>
+
+  <div class="win w1" aria-hidden="true">
+    <div class="bar"><span class="title">ssh · sito</span>
+      <div class="ctl">
+        <span><svg viewBox="0 0 12 12"><path d="M1 6h10"/></svg></span>
+        <span><svg viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9"/></svg></span>
+        <span><svg viewBox="0 0 12 12"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9"/></svg></span>
+      </div>
+    </div>
+    <div class="body">
+      <div class="steps mono">
+        <div><span class="n">1</span>backup<span class="ok"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span></div>
+        <div><span class="n">2</span>prova a vuoto<span class="ok"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span></div>
+        <div><span class="n">3</span>scrittura<span class="ok"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span></div>
+        <div><span class="n">4</span>rilettura dal DB<span class="ok"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="win w2" aria-hidden="true">
+    <div class="bar"><span class="title mono" style="font-size:16px">_elementor_data</span><span class="tag">JSON</span></div>
+    <div class="body">
+      <div class="code mono"><span class="k">"widgetType": "heading",</span>
+<span class="del">"title": "Lorem ipsum",</span><span class="add">"title": "Il testo vero",</span><span class="k">"header_size": "h2"</span></div>
+    </div>
+  </div>
+</body>
+</html>
